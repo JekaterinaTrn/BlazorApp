@@ -32,7 +32,7 @@ namespace EmployeeManagmentApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError,
                    "Error retrieving data from the database");
             }
-            
+
         }
 
         [HttpGet("{id}")]
@@ -43,7 +43,7 @@ namespace EmployeeManagmentApi.Controllers
             {
                 var result = await employeeRepository.GetEmployee(id);
 
-                if(result == null)
+                if (result == null)
                 {
                     return NotFound();
                 }
@@ -55,28 +55,28 @@ namespace EmployeeManagmentApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError,
                    "Error retrieving data from the database");
             }
-          }
+        }
         [HttpPost]
-         public async Task<ActionResult<Employee>> CreateEmployee(Employee employee)
+        public async Task<ActionResult<Employee>> CreateEmployee(Employee employee)
         {
             try
             {
-                if(employee == null)
+                if (employee == null)
                 {
                     return BadRequest();
                 }
 
                 var emp = employeeRepository.GetEmployeeByEmail(employee.Email);
 
-                if  ( emp != null)
+                if (emp != null)
                 {
                     ModelState.AddModelError("email", "Employee email already in use");
                     return BadRequest(ModelState);
                 }
 
-               var createdEmployee = await employeeRepository.AddEmployee(employee);
+                var createdEmployee = await employeeRepository.AddEmployee(employee);
 
-                return CreatedAtAction(nameof(GetEmployee), new { id = createdEmployee.EmployeeId},
+                return CreatedAtAction(nameof(GetEmployee), new { id = createdEmployee.EmployeeId },
                     createdEmployee);
             }
             catch (Exception)
@@ -97,14 +97,14 @@ namespace EmployeeManagmentApi.Controllers
                     return BadRequest("Employee ID mismatch");
                 }
 
-                 var employeeToUpdate = await employeeRepository.GetEmployee(id);
-            
-            if(employeeToUpdate == null)
+                var employeeToUpdate = await employeeRepository.GetEmployee(id);
+
+                if (employeeToUpdate == null)
                 {
                     return NotFound($"Employee with Id = {id} not found");
                 }
 
-                 return await employeeRepository.UpdateEmployee(employee);
+                return await employeeRepository.UpdateEmployee(employee);
             }
 
             catch (Exception)
@@ -113,8 +113,22 @@ namespace EmployeeManagmentApi.Controllers
                     "Error updating data");
             }
         }
+        [HttpDelete("{id:int}")}
+         public async Task<ActionResult<Employee>>  DeleteEmployee(int id)
+        {
+        try
+        {
+            var employeeToDelete = EmployeeRepository.GetEmployee(id);
         }
-    }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                   "Error deleting data");
+        }
+        }
+        }
+        }
+    
 
 
 
