@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagmentModels", "EmployeeManagmentModels\EmployeeManagmentModels.csproj", "{A55F58C7-D1CF-4257-AFA2-AFA06C9F1DAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagmentWeb", "EmployeeManagmentWeb\EmployeeManagmentWeb.csproj", "{DDD4B512-AEF2-4E2C-A70D-193E66FA3792}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagmentWeb", "EmployeeManagmentWeb\EmployeeManagmentWeb.csproj", "{DDD4B512-AEF2-4E2C-A70D-193E66FA3792}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagmentApi", "EmployeeManagmentApi\EmployeeManagmentApi.csproj", "{A8A5207D-6B6B-4BD8-9E22-04275093F069}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagmentApi", "EmployeeManagmentApi\EmployeeManagmentApi.csproj", "{A8A5207D-6B6B-4BD8-9E22-04275093F069}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
