@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagmentWeb.Pages
 {
-    public class DatabindingDemoBase : ComponentBase 
+    public class DatabindingDemoBase : ComponentBase
     {
-        protected string Name { get; set; } = "Tom";
-        protected string Gender { get; set; } = "Male";
+        public string Description { get; set; } = string.Empty;
 
-        protected string Colour { get; set; } = "background-color:white";
-    }
 
-    
     }
+}
 
