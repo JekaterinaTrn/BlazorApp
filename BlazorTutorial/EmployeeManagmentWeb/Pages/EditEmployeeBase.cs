@@ -1,4 +1,5 @@
-﻿using EmployeeManagmentModels;
+﻿using AutoMapper;
+using EmployeeManagmentModels;
 using EmployeeManagmentWeb.Models;
 using EmployeeManagmentWeb.Services;
 using Microsoft.AspNetCore.Components;
@@ -28,21 +29,26 @@ namespace EmployeeManagmentWeb.Pages
         [Parameter]
         public string  Id { get; set; }
 
+        [Inject]
+        public IMapper Mapper { get; set; }
+
         protected async override Task OnInitializedAsync()
         {
             Employee = await EmployeeService.GetEmployee(int.Parse(Id));
             Departments = (await DepartmentService.GetDepartments()).ToList();
 
-            EditEmployeeModel.EmployeeId = Employee.EmployeeId;
-            EditEmployeeModel.FirstName = Employee.FirstName;
-            EditEmployeeModel.LastName = Employee.LastName;
-            EditEmployeeModel.Email = Employee.Email;
-            EditEmployeeModel.ConfirmEmail = Employee.ConfirmEmail;
-            EditEmployeeModel.DateOfBrith = Employee.DateOfBrith;
-            EditEmployeeModel.Gender = Employee.Gender;
-            EditEmployeeModel.PhotoPath = Employee.PhotoPath; 
-            EditEmployeeModel.DepartmentId = Employee.DepartmentId;
-            EditEmployeeModel.Department = Employee.Department;
+            Mapper.Map(Employee, EditEmployeeModel);
+
+            //EditEmployeeModel.EmployeeId = Employee.EmployeeId;
+            //EditEmployeeModel.FirstName = Employee.FirstName;
+            //EditEmployeeModel.LastName = Employee.LastName;
+            //EditEmployeeModel.Email = Employee.Email;
+            //EditEmployeeModel.ConfirmEmail = Employee.ConfirmEmail;
+            //EditEmployeeModel.DateOfBrith = Employee.DateOfBrith;
+            //EditEmployeeModel.Gender = Employee.Gender;
+            //EditEmployeeModel.PhotoPath = Employee.PhotoPath; 
+            //EditEmployeeModel.DepartmentId = Employee.DepartmentId;
+            //EditEmployeeModel.Department = Employee.Department;
 
         }
 
