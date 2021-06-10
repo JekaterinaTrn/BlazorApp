@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Employee.ManagmentModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeeManagmentModels
+namespace Employee.ManagmentModels
 {
     public class Employee
     {
