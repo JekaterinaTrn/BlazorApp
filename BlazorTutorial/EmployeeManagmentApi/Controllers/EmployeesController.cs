@@ -20,7 +20,7 @@ namespace EmployeeManagmentApi.Controllers
             this.employeeRepository = employeeRepository;
         }
         [HttpGet("{search}")]
-        public async Task<ActionResult<IEnumerable<Employee>>> Search(string name, Gender? gender)
+        public async Task<ActionResult<IEnumerable<EmployeesController>>> Search(string name, Gender? gender)
         {
             try
             {
