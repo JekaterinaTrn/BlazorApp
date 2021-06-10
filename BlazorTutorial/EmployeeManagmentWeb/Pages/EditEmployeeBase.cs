@@ -79,11 +79,14 @@ namespace EmployeeManagmentWeb.Pages
 
             if (Employee.EmployeeId != 0)
             {
+                result = await EmployeeService.UpdateEmployee(Employee);
+            }
+            else
+            {
+                result = await EmployeeService.CreateEmployee(Employee);
 
             }
-
-            var result = await EmployeeService.UpdateEmployee(Employee);
-
+            
             if (result != null)
             {
                 NavigationManager.NavigateTo("/");
