@@ -32,9 +32,28 @@ namespace EmployeeManagmentWeb.Pages
         [Inject]
         public IMapper Mapper { get; set; }
 
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
+
         protected async override Task OnInitializedAsync()
+
         {
-            Employee = await EmployeeService.GetEmployee(int.Parse(Id));
+            int.TryParse(Id, out int employeeId);
+
+            if (employeeId != 0)
+            {
+                Employee = await EmployeeService.GetEmployee(int.Parse(Id));
+            }
+            else
+            {
+                Employee = new Employee
+                {
+                    DepartmentId = 1,
+                    DataofBrith = DateTime.Now,
+                    PhotoPath = "images/nphoto.jpg"
+                };
+            }
+            
             Departments = (await DepartmentService.GetDepartments()).ToList();
 
             Mapper.Map(Employee, EditEmployeeModel);
@@ -52,9 +71,23 @@ namespace EmployeeManagmentWeb.Pages
 
         }
 
-        protected void HandleValidSubmit()
+        protected async Task HandleValidSubmit()
         {
+            Mapper.Map(Employee, EditEmployeeModel);
 
+            Employee result = null;
+
+            if (Employee.EmployeeId != 0)
+            {
+
+            }
+
+            var result = await EmployeeService.UpdateEmployee(Employee);
+
+            if (result != null)
+            {
+                NavigationManager.NavigateTo("/");
+            }
         }
     }
 }

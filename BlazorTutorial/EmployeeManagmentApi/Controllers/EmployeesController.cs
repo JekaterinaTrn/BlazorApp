@@ -86,7 +86,7 @@ namespace EmployeeManagmentApi.Controllers
                     return BadRequest();
                 }
 
-                var emp = employeeRepository.GetEmployeeByEmail(employee.Email);
+                var emp =  await employeeRepository.GetEmployeeByEmail(employee.Email);
 
                 if (emp != null)
                 {
@@ -112,7 +112,7 @@ namespace EmployeeManagmentApi.Controllers
         {
             try
             {
-             
+                
 
                 var employeeToUpdate = await employeeRepository.GetEmployee(employee.EmployeeId);
 
