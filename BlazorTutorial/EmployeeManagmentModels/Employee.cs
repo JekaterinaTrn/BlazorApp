@@ -1,4 +1,6 @@
 ﻿using Employee.ManagmentModels;
+using EmployeeManagmentModels;
+using EmployeeManagmentModels.CustomValidators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,6 +19,8 @@ namespace Employee.ManagmentModels
         [Required]
         public string LastName { get; set; }
         [EmailAddress]
+        [EmailDomainValidator(AllowedDomain = "pragimtech.com",
+            ErrorMessage = "Only PragimTech.com is allowed")]
         public string Email { get; set; }
         public DateTime DateOfBrith { get; set; }
         public Gender Gender { get; set; }
