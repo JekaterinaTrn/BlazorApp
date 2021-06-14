@@ -13,9 +13,10 @@ namespace EmployeeManagmentWeb.Pages
         [Inject]
         public IEmployeeService EmployeeService { get; set; }
 
+        public IEnumerable<Employee> Employees { get; set; }
         public bool ShowFooter { get; set; } = true;
 
-        public IEnumerable<Employee> Employees { get; set; }
+        
 
         protected override async Task OnInitializedAsync()
         {

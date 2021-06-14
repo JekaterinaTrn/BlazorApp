@@ -3,7 +3,7 @@
 <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
     <div class="card-header">
         <h3>
-            <input type="checkbox" checked="@IsSelected" @onchange="CheckBoxChanged" />
+            <input type="checkbox" @onchange="CheckBoxChanged" />
 
             @Employee.FirstName @Employee.LastName
         </h3>
@@ -25,3 +25,5 @@
     </div>
     }
 </div>
+<Confirm ConfirmationChanged="ConfirmDelete_Click" @ref="DeleteConfirmation"
+         ConfirmationMessage=@($"Are you sure you want to delete \"{Employee.FirstName}\"")></Confirm>
