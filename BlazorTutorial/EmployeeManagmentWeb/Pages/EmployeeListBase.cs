@@ -29,7 +29,7 @@ namespace EmployeeManagmentWeb.Pages
             }
          
 
-        }
+        
         protected int SelectedEmployeesCount { get; set; } = 0;
 
         protected void EmployeeSelectionChanged(bool isSelected)
